@@ -2,6 +2,7 @@ import React from "react";
 import { Policy } from "../lib/policies";
 
 import Badge from "../Badge";
+import ProfileImages from "../ProfileImages";
 
 interface IProps extends Policy {
   index: number;
@@ -10,6 +11,7 @@ interface IProps extends Policy {
 const TableRow = ({
   index,
   customer,
+  members,
   provider,
   insuranceType,
   status,
@@ -21,6 +23,9 @@ const TableRow = ({
       </td>
       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
         {customer.firstName} {customer.lastName}
+      </td>
+      <td className="px-6">
+        <ProfileImages customers={members.map((m) => m.customer)} />
       </td>
       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
         {provider}

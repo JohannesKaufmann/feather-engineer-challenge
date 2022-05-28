@@ -72,6 +72,20 @@ const getPolicies = async (prisma: PrismaClient, args: GetPoliciesArgs) => {
           firstName: true,
           lastName: true,
           dateOfBirth: true,
+          profileColor: true,
+        },
+      },
+      members: {
+        select: {
+          customerId: true,
+          customer: {
+            select: {
+              id: true,
+              firstName: true,
+              lastName: true,
+              profileColor: true,
+            },
+          },
         },
       },
     },

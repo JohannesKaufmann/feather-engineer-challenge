@@ -18,6 +18,8 @@ export interface Customer {
   lastName: string;
 
   dateOfBirth: string;
+
+  profileColor: string;
 }
 export interface Policy {
   id: string;
@@ -29,5 +31,12 @@ export interface Policy {
   startDate: string | null;
   endDate: string;
 
+  customer: Customer;
+
+  members: PolicyMember[];
+}
+
+export interface PolicyMember {
+  customerId: string;
   customer: Customer;
 }

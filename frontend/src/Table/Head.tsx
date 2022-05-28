@@ -19,6 +19,12 @@ const TableHead = () => (
         scope="col"
         className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
       >
+        Members
+      </th>
+      <th
+        scope="col"
+        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+      >
         Provider
       </th>
       <th

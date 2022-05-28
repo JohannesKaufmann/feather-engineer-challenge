@@ -28,17 +28,38 @@ model Customer {
   firstName     String      @db.VarChar(255)
   lastName      String      @db.VarChar(255)
   dateOfBirth   DateTime
+
+  profileColor String @default("#dbdbdb")
+
   policies      Policy[]
+  policyMembers      PolicyMember[]
+
+  
 }
 
 model Policy {
   id            String        @id @default(uuid()) @db.Uuid
-  customer      Customer      @relation(fields: [customerId], references: [id])
-  customerId    String        @db.Uuid
   provider      String
   insuranceType InsuranceType
   status        PolicyStatus
   startDate     DateTime
   endDate       DateTime?
   createdAt     DateTime      @default(now())
+
+  // The customer is the creator/owner of the policy
+  customer      Customer      @relation(fields: [customerId], references: [id])
+  customerId    String        @db.Uuid
+
+  // The members are associated (e.g. the children of the owner) 
+  members      PolicyMember[]
+}
+
+model PolicyMember {
+  policyId String @db.Uuid
+  policy      Policy      @relation(fields: [policyId], references: [id])
+
+  customerId String @db.Uuid
+  customer      Customer      @relation(fields: [customerId], references: [id])
+
+  @@unique([policyId, customerId])
 }
