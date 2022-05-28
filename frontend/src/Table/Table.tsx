@@ -11,7 +11,7 @@ const Table = ({ policies }: IProps) => (
     <TableHead />
 
     <tbody>
-      {policies.map((policy: any, index: number) => {
+      {policies.map((policy, index: number) => {
         return <TableRow key={policy.id} index={index} {...policy} />;
       })}
 

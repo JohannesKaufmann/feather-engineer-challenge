@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
-import Dashboard from "./Dashboard";
+import Dashboard from "./Dashboard/index";
 
 import "./index.css";
 
