@@ -17,6 +17,25 @@ const filterSearch = (search: string): Prisma.PolicyWhereInput[] => {
         lastName: { contains: search as string, mode: "insensitive" },
       },
     },
+    // Filter on the members array, for the firstname and lastname:
+    {
+      members: {
+        some: {
+          customer: {
+            firstName: { contains: search as string, mode: "insensitive" },
+          },
+        },
+      },
+    },
+    {
+      members: {
+        some: {
+          customer: {
+            lastName: { contains: search as string, mode: "insensitive" },
+          },
+        },
+      },
+    },
   ];
 
   return [

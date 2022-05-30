@@ -23,9 +23,8 @@ const Dashboard = () => {
   const [status, setStatus] = useState("");
 
   const reset = useCallback(() => {
-    setSearch("");
     setStatus("");
-  }, [setSearch, setStatus]);
+  }, [setStatus]);
 
   const url = assemblePoliciesURL({ search, status });
 
