@@ -12,7 +12,7 @@ const Table = ({ policies }: IProps) => (
 
     <tbody>
       {policies.map((policy, index: number) => {
-        return <TableRow key={policy.id} index={index} {...policy} />;
+        return <TableRow key={policy.id} index={index + 1} {...policy} />;
       })}
 
       {/* TODO: aria-label (or something else) to make sure the notice is read? */}
