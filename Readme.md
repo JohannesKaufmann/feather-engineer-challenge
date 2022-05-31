@@ -1,10 +1,33 @@
+## UI
+
+In the UI, I added a search bar and a filter popup:
+![table with the ability to search and filter entries](/.github/ui_table.png)
+
+The table can also be searched for policy members:
+![members profile images](/.github/ui_members.png)
+
+## Testing
+
+Make sure that docker-compose is running. Then run the end-to-end tests with cypress:
+
+```
+cd e2e
+
+# and then run
+yarn run cypress open
+# or alternatively
+yarn run cypress run
+```
+
+---
+
 # Feather Take Home Assessment
 
 Thank you for applying at Feather and taking the time to do this home assessment.
 
 The goal of this project is to let you **show off your coding and problem-solving skills**, on a task that resembles the kind of work you’ll be doing with us.
 
-This coding challenge applies to **frontend, backend, and full-stack roles**. Depending on the position you are applying for, you can focus on your specific area.  
+This coding challenge applies to **frontend, backend, and full-stack roles**. Depending on the position you are applying for, you can focus on your specific area.
 
 You can spend as little or as much time as you like on this project. We've added some initial boilerplate to help you get started, but **feel free to refactor every part of this app as you may seem fit**.
 
@@ -15,11 +38,11 @@ You can spend as little or as much time as you like on this project. We've added
 
 ## Engineering challenge
 
-We've prepared several different user stories to work on. Depending on what position you applied to, pick one of them:  
+We've prepared several different user stories to work on. Depending on what position you applied to, pick one of them:
+
 - [Backend](./backend-readme.md)
 - [Frontend](./frontend-readme.md)
 - [Full Stack](./full-stack-readme.md)
-
 
 ## Task requirements
 
@@ -82,16 +105,16 @@ Feel free to update or add more endpoints to accommodate or improve your solutio
 
 ### Policy
 
-| fields         | type                            | comment                                       |
-| -------------- | ------------------------------- | --------------------------------------------- |
-| id             | string                          | Used to identify the policy                   |
-| customer       | [Customer](#Customer)           | Object holding the customer's informations    |
-| provider       | string                          | Name of the provider (Allianz, AXA…)          |
-| insuranceType  | [InsuranceType](#InsuranceType) | Type of the insurance (Liability, Household…) |
-| status         | [PolicyStatus](#PolicyStatus)   | Status of the insurance (Active, Cancelled)   |
-| startDate      | date                            | Date when the policy should start             |
-| endDate        | date                            | Date when the policy ends                     |
-| createdAt      | date                            | Date when the record was created              |
+| fields        | type                            | comment                                       |
+| ------------- | ------------------------------- | --------------------------------------------- |
+| id            | string                          | Used to identify the policy                   |
+| customer      | [Customer](#Customer)           | Object holding the customer's informations    |
+| provider      | string                          | Name of the provider (Allianz, AXA…)          |
+| insuranceType | [InsuranceType](#InsuranceType) | Type of the insurance (Liability, Household…) |
+| status        | [PolicyStatus](#PolicyStatus)   | Status of the insurance (Active, Cancelled)   |
+| startDate     | date                            | Date when the policy should start             |
+| endDate       | date                            | Date when the policy ends                     |
+| createdAt     | date                            | Date when the record was created              |
 
 ### Customer
 
@@ -113,11 +136,21 @@ Feel free to update or add more endpoints to accommodate or improve your solutio
 ## General questions
 
 - How much time did you spend working on the solution?
+  ![time spend on challenge](/.github/wakatime.png)
+
+  - About 8h according to Wakatime. Which was a bit more than for another challenge from a different company... But in general the scope was good.
+
 - What’s the part of the solution you are most proud of?
 
-  _You can share a code snippet here if you feel like it_
+  - Probably the Dashboard/Filter/Search components. And just passing the `fetchURL` to the DashboardTable component (which could also easily use React.memo). It is a bit simplistic though, so should probably be replaced with a proper `debounce` for the form inputs.
+  - It was my first time using Prisma, so that was also pretty cool!
 
 - If you had more time, what other things you would like to do?
-- Do you have any feedback regarding this coding challenge?  
+  - Spend more time on testing. Wanted to have an extra docker-compose file for testing, but unfortunately did not have enough time for that.
+- Do you have any feedback regarding this coding challenge?
 
-  _Is the initial setup working?, is something missing?, or any other comment_
+  - The intial setup was pretty good
+
+  - The part about the family members could be clarified. Maybe with a mockup of what the UI is supposed to look like. Or further description.
+
+  - When I added dependencies, I just followed the `docker compose exec ... yarn add` way from the README. But in order for the editor integrations to work, a `yarn install` also has to happen outside of Docker.
